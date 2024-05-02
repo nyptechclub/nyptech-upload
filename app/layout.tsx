@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "@uploadthing/react/styles.css";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
+ 
+import { ourFileRouter } from "@/app/api/uploadthing/core";
+import { ClerkLoaded, ClerkLoading, ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { Loader } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +23,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="en" data-theme="cupcake">
-      <body className={inter.className}>{children}</body>
+       <NextSSRPlugin
+          routerConfig={extractRouterConfig(ourFileRouter)}
+        />
+      <body className={inter.className}>
+      <div className="flex-end">
+                <ClerkLoading>
+                  <Loader className="w-5 h-5"></Loader>
+                </ClerkLoading>
+                <ClerkLoaded>
+                  <SignedOut>
+                    <Button><SignInButton
+                      mode="modal"
+                      forceRedirectUrl="/learn"
+                      signUpForceRedirectUrl="/learn"
+                    />
+                    </Button>
+                  </SignedOut>
+                  <SignedIn>
+                    <UserButton afterSignOutUrl="/" />
+                  </SignedIn>
+                </ClerkLoaded>
+              </div>
+        {children}
+        </body>
     </html>
+    </ClerkProvider>
   );
 }
