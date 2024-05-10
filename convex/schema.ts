@@ -3,8 +3,11 @@ import { v } from "convex/values";
 
 export const fileTypes = v.union(
   v.literal("image"),
-  v.literal("csv"),
-  v.literal("pdf")
+  v.literal("code"),
+  v.literal("video"),
+  v.literal("audio"),
+  v.literal("txt"),
+  v.literal("doc")
 );
 
 export const roles = v.union(v.literal("admin"), v.literal("member"));
@@ -36,4 +39,25 @@ export default defineSchema({
       })
     ),
   }).index("by_tokenIdentifier", ["tokenIdentifier"]),
+  boards: defineTable({
+    title: v.string(),
+    orgId: v.string(),
+    authorId: v.string(),
+    authorName: v.string(),
+    imageUrl: v.string(),
+  })
+    .index("by_org", ["orgId"])
+    .searchIndex("search_title", {
+      searchField: "title",
+      filterFields: ["orgId"]
+    }),
+  userFavorites: defineTable({
+    orgId: v.string(),
+    userId: v.string(),
+    boardId: v.id("boards")
+  })
+    .index("by_board", ["boardId"])
+    .index("by_user_org", ["userId", "orgId"])
+    .index("by_user_board", ["userId", "boardId"])
+    .index("by_user_board_org", ["userId", "boardId", "orgId"])
 });

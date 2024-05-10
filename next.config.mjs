@@ -3,7 +3,7 @@ const nextConfig = {
     images: {
       remotePatterns: [
         {
-          hostname: "dynamic-guineapig-472.convex.cloud",
+          hostname: process.env.CONVEX,
         },
       ],
     },

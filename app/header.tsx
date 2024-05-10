@@ -7,26 +7,24 @@ import {
   UserButton,
   useSession,
 } from "@clerk/nextjs";
+import { Home } from "lucide-react";
 import Link from "next/link";
 
 export function Header() {
   return (
-    <div className="relative z-10 border-b py-4 bg-gray-50">
+    <div className="relative z-10 border-b py-4 bg-primary-content text-accent">
       <div className="items-center container mx-auto justify-between flex">
-        <Link href="/" className="flex gap-2 items-center text-xl text-black">
-          <img src="https://nyptech.vercel.app/favicon.ico" width="50" height="50" alt="file drive logo" />
-          FileDrive
+        <Link href="/" className="flex gap-2 items-center text-xl">
+        <Home/>
         </Link>
 
-        <SignedIn>
-          <Button variant={"outline"}>
-            <Link href="/dashboard/files">Your Files</Link>
-          </Button>
-        </SignedIn>
-
         <div className="flex gap-2">
-          <OrganizationSwitcher />
+          <SignedIn>
+            <div className="bg-accent rounded-sm">
+            <OrganizationSwitcher/>
+            </div>
           <UserButton />
+          </SignedIn>
           <SignedOut>
             <SignInButton>
               <Button>Sign In</Button>

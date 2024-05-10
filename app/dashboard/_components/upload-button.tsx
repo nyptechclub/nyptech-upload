@@ -70,8 +70,42 @@ export function UploadButton() {
 
     const types = {
       "image/png": "image",
-      "application/pdf": "pdf",
-      "text/csv": "csv",
+      "image/jpg": "image",
+      "image/x-png": "image", //compressed png
+      "image/jpeg": "image",
+      "image/svg+xml": "image",
+      "image/gif": "image", //unstable
+      "image/vnd": "image", //favicon microsoft     
+      "image/x-icon": "image", //favicon IANA
+      "application/pdf": "doc",
+      "application/x-zip-compressed": "doc", //zip
+      "application/octet-stream": "doc", //catchall zip
+      "application/x-zip": "doc", //maybe zip or 7zip(am confused)
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "doc", //xls
+      "application/vnd.ms-excel": "doc", //xlsx
+      "text/csv": "doc",
+      "text/rtf": "doc", //rich text
+      "application/vnd.oasis.opendocument.text": "doc", //odt
+      "application/epub+zip": "doc", //epub
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation": "doc", //pptx
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "doc", //docx
+      "text/html": "txt",  //html    
+      "text/plain": "txt", //txt
+      "application/json": "txt", //json
+      "video/webm": "video",
+      "video/mp4": "video",
+      "audio/wav": "audio",
+      "audio/mp3": "audio",
+      "audio/ogg": "audio",  
+      "application/typescript": "code", // .ts
+      "application/tsx": "code", // .tsx
+      "application/javascript": "code", // .js
+      "application/jsx": "code", // .jsx
+      "text/x-python-script": "code", // .py
+      "text/x-python": "code", // .py v2
+      "text/x-csharp": "code", // .cs
+      "text/css": "code", // .css
+    
     } as Record<string, Doc<"files">["type"]>;
 
     try {
