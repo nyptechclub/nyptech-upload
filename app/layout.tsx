@@ -5,6 +5,7 @@ import ConvexClientProvider from "./ConvexClientProvider";
 import { Header } from "./header";
 import { Toaster } from "@/components/ui/toaster";
 import Theme2 from "./theme2";
+import { ModalProvider } from "./_components/modals/modal-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Theme2 />
+          <ModalProvider/>
         </body>
       </html>
     </ConvexClientProvider>
