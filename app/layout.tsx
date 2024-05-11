@@ -3,9 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ConvexClientProvider from "./ConvexClientProvider";
 import { Header } from "./header";
-import { Toaster } from "@/components/ui/toaster";
 import Theme2 from "./theme2";
 import { ModalProvider } from "./_components/modals/modal-provider";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 

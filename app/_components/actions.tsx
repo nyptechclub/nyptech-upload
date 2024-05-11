@@ -36,7 +36,7 @@ export const Actions = ({
   const {user} = useUser();
   const onCopyLink = () => {
     navigator.clipboard.writeText(
-      `${window.location.origin}/board/${id}`,
+      `${window.location.origin}/dashboard/board/${id}`,
     )
       .then(() => toast.success("Link copied"))
       .catch(() => toast.error("Failed to copy link"))
@@ -57,7 +57,7 @@ export const Actions = ({
         onClick={(e) => e.stopPropagation()}
         side={side}
         sideOffset={sideOffset}
-        className="w-60 bg-base-300"
+        className="w-60"
       >
         <DropdownMenuItem
           onClick={onCopyLink}
@@ -80,7 +80,7 @@ export const Actions = ({
           onConfirm={onDelete}
         >
           <button
-            className="btn btn-ghost text-primary"
+            className="btn btn-ghost text-primary w-full"
           >
             <Trash2 className="h-4 w-4 mr-2" />
             Delete

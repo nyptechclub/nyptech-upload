@@ -9,7 +9,6 @@ import {
   useOrganization
 } from "@clerk/nextjs";
 
-import { InviteButton } from "./invite-button";
 import { useSearchParams } from "next/navigation";
 
 export const Navbar = () => {
@@ -31,37 +30,13 @@ const closeModal = () => {
 };
   return (
     <div className="flex flex-col md:flex-row items-center gap-x-4 p-5">
-      <div className="block flex-1">
-        <OrganizationSwitcher
-          hidePersonal
-          appearance={{
-            elements: {
-              rootBox: {
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "100%",
-                maxWidth: "376px",
-              },
-              organizationSwitcherTrigger: {
-                padding: "6px",
-                width: "100%",
-                borderRadius: "8px",
-                border: "1px solid #E5E7EB",
-                justifyContent: "space-between",
-                backgroundColor: "white",
-              }
-            }
-          }}
-        />
-      </div>
       <Button
         variant={favorites ? "ghost" : "secondary"}
         asChild
         size="lg"
         className="font-normal justify-start px-2 w-full"
       >
-        <Link href={`/board/`}>
+        <Link href={`/dashboard/board`}>
           <LayoutDashboard className="h-4 w-4 mr-2" />
           Team boards
         </Link>
@@ -73,16 +48,13 @@ const closeModal = () => {
         className="font-normal justify-start px-2 w-full"
       >
         <Link href={{
-          pathname: `/board/`,
+          pathname: `/dashboard/board/`,
           query: { favorites: true }
         }}>
           <Star className="h-4 w-4 mr-2" />
           Favorite boards
         </Link>
       </Button>
-      {organization && (
-        <InviteButton />
-      )}
     </div>
   );
 };

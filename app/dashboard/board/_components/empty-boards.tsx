@@ -24,7 +24,7 @@ export const EmptyBoards = () => {
     })
       .then((id) => {
         toast.success("Board created");
-        router.push(`/board/${id}`);
+        router.push(`/dashboard/board/${id}`);
       })
       .catch(() => toast.error("Failed to create board"));
   };

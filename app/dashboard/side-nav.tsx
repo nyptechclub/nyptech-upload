@@ -11,13 +11,13 @@ export function SideNav() {
 
   return (
     <div className="flex flex-row gap-3 sm:flex-col">
-      <Link href="/board">
+      <Link href="/dashboard/board">
         <Button
           variant="expandIcon"
           iconPlacement="left"
           Icon={Pencil}
           className={clsx("gap-3", {
-            "text-blue-500": pathname.includes("/board"),
+            "text-blue-500": pathname.includes("/dashboard/board"),
           })}
         > Board
         </Button>
