@@ -84,7 +84,7 @@ export function FileBrowser({
 
   return (
     <div>
-      <div className="flex justify-between items-center gap-4 flex-col">
+      <div className="flex justify-between items-center gap-4 flex-col min-h-screen m-5">
         <h1 className="text-4xl font-bold">{title}</h1>
         <SearchBar query={query} setQuery={setQuery} />
       </div>

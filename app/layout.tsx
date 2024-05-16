@@ -23,12 +23,12 @@ export default function RootLayout({
   return (
     <ConvexClientProvider>
       <html lang="en">
-        <body className={inter.className && "min-h-screen"}>
+        <body className={inter.className}>
 
 
           <Toaster />
           <Header />
-          <main className="bg-base-100 text-base-content">
+          <main className="bg-base-100 text-base-content min-h-screen">
           {children}
 
           </main>
