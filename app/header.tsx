@@ -27,7 +27,7 @@ export function Header() {
           </SignedIn>
           <SignedOut>
             <SignInButton>
-              <Button>Sign In</Button>
+              <Button className="btn">Sign In</Button>
             </SignInButton>
           </SignedOut>
         </div>

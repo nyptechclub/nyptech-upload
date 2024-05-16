@@ -28,7 +28,10 @@ export default function RootLayout({
 
           <Toaster />
           <Header />
+          <main className="bg-base-100 text-base-content">
           {children}
+
+          </main>
           <Theme2 />
           <ModalProvider/>
         </body>

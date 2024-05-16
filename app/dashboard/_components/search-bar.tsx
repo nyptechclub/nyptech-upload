@@ -13,6 +13,7 @@ import { Loader2, SearchIcon } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { UploadButton } from "./upload-button";
 
 const formSchema = z.object({
   query: z.string().min(0).max(200),
@@ -43,6 +44,7 @@ export function SearchBar({
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex gap-2 items-center"
         >
+                <UploadButton/>
           <FormField
             control={form.control}
             name="query"
@@ -60,7 +62,7 @@ export function SearchBar({
             size="sm"
             type="submit"
             disabled={form.formState.isSubmitting}
-            className="flex gap-1"
+            className="flex gap-1 btn"
           >
             {form.formState.isSubmitting && (
               <Loader2 className="h-4 w-4 animate-spin" />

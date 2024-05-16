@@ -151,7 +151,7 @@ export function UploadButton() {
       }}
     >
       <DialogTrigger asChild>
-        <Button>Upload File</Button>
+        <Button className="btn">Upload File</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -194,7 +194,7 @@ export function UploadButton() {
               <Button
                 type="submit"
                 disabled={form.formState.isSubmitting}
-                className="flex gap-1"
+                className="flex gap-1 btn"
               >
                 {form.formState.isSubmitting && (
                   <Loader2 className="h-4 w-4 animate-spin" />

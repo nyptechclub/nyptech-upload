@@ -16,7 +16,7 @@ export function SideNav() {
           variant="expandIcon"
           iconPlacement="left"
           Icon={Pencil}
-          className={clsx("gap-3", {
+          className={clsx("gap-3 btn", {
             "text-blue-500": pathname.includes("/dashboard/board"),
           })}
         > Board
@@ -27,7 +27,7 @@ export function SideNav() {
           variant="expandIcon"
           iconPlacement="left"
           Icon={FileIcon}
-          className={clsx("gap-3", {
+          className={clsx("gap-3 btn", {
             "text-blue-500": pathname.includes("/dashboard/files"),
           })}
         >
@@ -40,7 +40,7 @@ export function SideNav() {
           variant="expandIcon"
           iconPlacement="left"
           Icon={StarIcon}
-          className={clsx("gap-3", {
+          className={clsx("gap-3 btn", {
             "text-blue-500": pathname.includes("/dashboard/favorites"),
           })}
         > Liked
@@ -52,7 +52,7 @@ export function SideNav() {
                     variant="expandIcon"
                     iconPlacement="left"
                     Icon={TrashIcon}
-          className={clsx("gap-3", {
+          className={clsx("gap-3 btn", {
             "text-blue-500": pathname.includes("/dashboard/trash"),
           })}
         >Trash

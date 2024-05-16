@@ -74,11 +74,11 @@ export const RenameModal = () => {
           />
           <DialogFooter>
             <DialogClose asChild>
-              <Button type="button" variant="outline">
+              <Button type="button" className="btn btn-outline">
                 Cancel
               </Button>
             </DialogClose>
-            <Button disabled={pending} type="submit" variant="outline">
+            <Button disabled={pending} type="submit" className="btn btn-outline">
               Save
             </Button>
           </DialogFooter>
