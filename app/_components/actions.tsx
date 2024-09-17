@@ -80,7 +80,7 @@ export const Actions = ({
           onConfirm={onDelete}
         >
           <button
-            className="btn btn-ghost text-primary w-full"
+            className=" text-primary w-full"
           >
             <Trash2 className="h-4 w-4 mr-2" />
             Delete

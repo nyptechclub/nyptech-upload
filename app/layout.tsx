@@ -6,6 +6,8 @@ import { Header } from "./header";
 import Theme2 from "./theme2";
 import { ModalProvider } from "./_components/modals/modal-provider";
 import { Toaster } from "sonner";
+import { EdgeStoreProvider } from "@/lib/edgestore";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,8 +25,9 @@ export default function RootLayout({
   return (
     <ConvexClientProvider>
       <html lang="en">
-        <body className={inter.className}>
+      <EdgeStoreProvider>
 
+        <body className={inter.className}>
 
           <Toaster />
           <Header />
@@ -32,9 +35,12 @@ export default function RootLayout({
           {children}
 
           </main>
+
           <Theme2 />
           <ModalProvider/>
         </body>
+        </EdgeStoreProvider>
+
       </html>
     </ConvexClientProvider>
 

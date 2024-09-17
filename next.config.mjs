@@ -6,6 +6,9 @@ const nextConfig = {
           hostname: process.env.CONVEX,
         },
       ],
+      domains: [
+          "files.edgestore.dev"
+        ]
     },
   };
   

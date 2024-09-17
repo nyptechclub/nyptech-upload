@@ -102,7 +102,6 @@ export const SelectionTools = memo(({
         <div data-tip="Bring to front" className="tooltip">
           <button
             onClick={moveToFront}
-            className="btn"
           >
             <BringToFront />
           </button>
@@ -110,7 +109,6 @@ export const SelectionTools = memo(({
         <div data-tip="Send to back" className="tooltip tooltip-bottom">
           <button
             onClick={moveToBack}
-            className="btn"
           >
             <SendToBack />
           </button>
@@ -119,7 +117,6 @@ export const SelectionTools = memo(({
       <div className="flex items-center pl-2 ml-2 border-l border-neutral-200">
         <div data-tip="Delete" className="tooltip">
           <button
-            className="btn"
             onClick={deleteLayers}
           >
             <Trash2 />

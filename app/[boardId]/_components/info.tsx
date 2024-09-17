@@ -42,7 +42,6 @@ export const Info = ({
 
       <div data-tip="Edit title" className="tooltip tooltip-bottom">
         <button
-          className="btn btn-link"
           onClick={() => onOpen(data._id, data.title)}
         >
           {data.title}

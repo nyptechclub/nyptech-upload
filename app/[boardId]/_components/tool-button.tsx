@@ -21,7 +21,6 @@ export const ToolButton = ({
       <button
         disabled={isDisabled}
         onClick={onClick}
-        className="btn"
       >
         <Icon />
       </button>
