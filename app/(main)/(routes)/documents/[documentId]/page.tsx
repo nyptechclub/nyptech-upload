@@ -41,7 +41,7 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
     );
   }
 
-  if (document === null) {
+  if (document === null || document.content === undefined) {
     return <div>Not found</div>;
   }
 

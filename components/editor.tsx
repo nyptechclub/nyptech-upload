@@ -1,68 +1,45 @@
+//@ts-nocheck
 "use client";
 
-import { useCreateBlockNote } from "@blocknote/react";
-import { BlockNoteView } from "@blocknote/mantine";
-import "@blocknote/mantine/style.css";
+import { useEditor, EditorContent } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
 import { useEffect } from "react";
 
 interface EditorProps {
-  onChange: (value: string) => void;
-  initialContent?: string;
-  editable?: boolean;
+  initialContent: string;
+  editable: boolean;
+  onChange: (content: string) => void;
 }
 
-const Editor = ({ onChange, initialContent, editable = true }: EditorProps) => {
-  // Create the BlockNote editor
-  const editor = useCreateBlockNote({
-    uploadFile: async (file: File) => {
-      return ""; // Handle file uploads here if necessary
+const Editor = ({ initialContent, editable, onChange }: EditorProps) => {
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+    ],
+    content: initialContent,  // initial content to set in the editor
+    editable: editable,  // controls if the content is editable or not
+    onUpdate: ({ editor }) => {
+      const htmlContent = editor.getHTML();  // Get HTML content from the editor
+      onChange(htmlContent);  // Pass updated content to parent
     },
   });
 
-  // Apply the `editable` flag to the editor when it changes
+  // Reset content if initialContent changes
   useEffect(() => {
-    if (editor) {
-      editor.isEditable = editable;
+    if (editor && initialContent !== editor.getHTML()) {
+      editor.commands.setContent(initialContent);
     }
-  }, [editor, editable]);
-
-  // Initialize content if provided
-  useEffect(() => {
-    if (editor && initialContent) {
-      try {
-        const parsedContent = JSON.parse(initialContent);
-
-        // Insert blocks into the editor (this assumes `parsedContent` is in the correct format)
-        editor.insertBlocks(parsedContent.blocks, "after");
-      } catch (error) {
-        console.error("Error parsing initial content", error);
-      }
-    }
-  }, [editor, initialContent]);
-
-  // Watch for document changes and send updates to the parent
-  useEffect(() => {
-    if (editor) {
-      const handleContentChange = () => {
-        // Hypothetically using `getDocumentAsJSON` to serialize document content
-        const updatedContent = JSON.stringify(editor._tiptapEditor.getJSON()); // Use appropriate method
-        onChange(updatedContent); // Send updated content to the parent component
-      };
-
-      // Listen for updates using Tiptap's internal event system
-      const unsubscribe = editor._tiptapEditor.on("update", handleContentChange);
-
-      return () => {
-        editor._tiptapEditor.off("update", handleContentChange); // Clean up the event listener
-      };
-    }
-  }, [editor, onChange]);
+  }, [initialContent, editor]);
 
   if (!editor) {
-    return <div>Loading editor...</div>;
+    return <div>Loading Editor...</div>;
   }
 
-  return <BlockNoteView editor={editor} />;
+  return (
+    <div className="border p-4">
+      <EditorContent editor={editor} />
+    </div>
+  );
 };
 
 export default Editor;
